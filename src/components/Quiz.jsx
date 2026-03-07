@@ -7,7 +7,7 @@ const Quiz = () => {
     (state) => state.quiz,
   );
 
-  const selected = answers[currentIndex] ;
+  const selected = answers[currentIndex]  ;
 
   if (!questions || questions.length === 0) {
     return <div>No questions found</div>;
