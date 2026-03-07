@@ -7,7 +7,7 @@ const Quiz = () => {
     (state) => state.quiz,
   );
 
-  const selected = answers[currentIndex] ?? null;
+  const selected = answers[currentIndex] ;
 
   if (!questions || questions.length === 0) {
     return <div>No questions found</div>;
@@ -53,6 +53,7 @@ const Quiz = () => {
           <button onClick={() => alert("Quiz Submitted!")}>Submit</button>
         ) : (
           <button
+          disabled={!selected}
             onClick={() => {
               dispatch(nextQuestion());
             }}
