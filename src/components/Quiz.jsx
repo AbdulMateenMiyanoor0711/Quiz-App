@@ -17,9 +17,8 @@ const Quiz = () => {
   return (
     <div>
       <p>
-        Question No {currentIndex + 1} of {questions.length}
+        Question No {currentIndex +1} of {questions.length}
       </p>
-
       <h2>{currentQuestion.question}</h2>
 
       {currentQuestion.options.map((option, i) => (
