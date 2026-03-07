@@ -14,46 +14,46 @@ const htmlQuiz = [
     options: ["<a>", "<link>", "<href>", "<hyper>"],
     ans: "<a>",
   },
-  {
-    question: "Which tag inserts an image?",
-    options: ["<img>", "<image>", "<pic>", "<src>"],
-    ans: "<img>",
-  },
-  {
-    question: "Which tag creates a paragraph?",
-    options: ["<p>", "<text>", "<para>", "<pg>"],
-    ans: "<p>",
-  },
-  {
-    question: "Largest heading tag?",
-    options: ["<h6>", "<h1>", "<head>", "<heading>"],
-    ans: "<h1>",
-  },
-  {
-    question: "Tag for unordered list?",
-    options: ["<ul>", "<ol>", "<li>", "<list>"],
-    ans: "<ul>",
-  },
-  {
-    question: "Tag for line break?",
-    options: ["<br>", "<lb>", "<break>", "<newline>"],
-    ans: "<br>",
-  },
-  {
-    question: "HTML metadata is inside?",
-    options: ["<body>", "<head>", "<meta>", "<footer>"],
-    ans: "<head>",
-  },
-  {
-    question: "Table row tag?",
-    options: ["<td>", "<tr>", "<th>", "<row>"],
-    ans: "<tr>",
-  },
-  {
-    question: "Alternate text attribute?",
-    options: ["alt", "title", "src", "href"],
-    ans: "alt",
-  },
+  // {
+  //   question: "Which tag inserts an image?",
+  //   options: ["<img>", "<image>", "<pic>", "<src>"],
+  //   ans: "<img>",
+  // },
+  // {
+  //   question: "Which tag creates a paragraph?",
+  //   options: ["<p>", "<text>", "<para>", "<pg>"],
+  //   ans: "<p>",
+  // },
+  // {
+  //   question: "Largest heading tag?",
+  //   options: ["<h6>", "<h1>", "<head>", "<heading>"],
+  //   ans: "<h1>",
+  // },
+  // {
+  //   question: "Tag for unordered list?",
+  //   options: ["<ul>", "<ol>", "<li>", "<list>"],
+  //   ans: "<ul>",
+  // },
+  // {
+  //   question: "Tag for line break?",
+  //   options: ["<br>", "<lb>", "<break>", "<newline>"],
+  //   ans: "<br>",
+  // },
+  // {
+  //   question: "HTML metadata is inside?",
+  //   options: ["<body>", "<head>", "<meta>", "<footer>"],
+  //   ans: "<head>",
+  // },
+  // {
+  //   question: "Table row tag?",
+  //   options: ["<td>", "<tr>", "<th>", "<row>"],
+  //   ans: "<tr>",
+  // },
+  // {
+  //   question: "Alternate text attribute?",
+  //   options: ["alt", "title", "src", "href"],
+  //   ans: "alt",
+  // },
 ];
 
 const cssQuiz = [

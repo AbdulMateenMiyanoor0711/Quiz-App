@@ -14,9 +14,10 @@ const quizSlice = createSlice({
   reducers: {
     startQuiz: (state, action) => {
       const quizdata = action.payload;
-      const shuffled = [...quizdata].sort(() => 0.5 - Math.random());
-      const randomten = shuffled.slice(0, 10);
-      state.questions = randomten;
+      state.questions = quizdata;
+      // const shuffled = [...quizdata].sort(() => 0.5 - Math.random());
+      // const randomten = shuffled.slice(0, 10);
+      // state.questions = randomten;
       state.currentIndex = 0;
       state.answers = [];
       state.isStarted = true;
