@@ -1,12 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
 import { nextQuestion, prevQuestion, selectAnswer } from "../redux/quizSlice";
 
 const Quiz = () => {
   const dispatch = useDispatch();
-  const { questions, currentIndex } = useSelector((state) => state.quiz);
+  const { questions, currentIndex, answers } = useSelector(
+    (state) => state.quiz,
+  );
 
-  const [selected, setSelected] = useState(null);
+  const selected = answers[currentIndex] ?? null;
 
   if (!questions || questions.length === 0) {
     return <div>No questions found</div>;
@@ -17,7 +18,7 @@ const Quiz = () => {
   return (
     <div>
       <p>
-        Question No {currentIndex +1} of {questions.length}
+        Question No {currentIndex + 1} of {questions.length}
       </p>
       <h2>{currentQuestion.question}</h2>
 
@@ -30,7 +31,6 @@ const Quiz = () => {
               value={option}
               checked={selected === option}
               onChange={() => {
-                setSelected(option);
                 dispatch(selectAnswer({ index: currentIndex, answer: option }));
               }}
             />
@@ -44,7 +44,6 @@ const Quiz = () => {
           disabled={currentIndex === 0}
           onClick={() => {
             dispatch(prevQuestion());
-            setSelected(null);
           }}
         >
           Previous
@@ -56,7 +55,6 @@ const Quiz = () => {
           <button
             onClick={() => {
               dispatch(nextQuestion());
-              setSelected(null);
             }}
           >
             Next
