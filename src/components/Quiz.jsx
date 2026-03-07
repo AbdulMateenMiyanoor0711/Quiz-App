@@ -1,13 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import { nextQuestion, prevQuestion, selectAnswer } from "../redux/quizSlice";
-
+import {  useNavigate } from "react-router";
 const Quiz = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { questions, currentIndex, answers } = useSelector(
     (state) => state.quiz,
   );
 
-  const selected = answers[currentIndex]  ;
+  const selected = answers[currentIndex];
 
   if (!questions || questions.length === 0) {
     return <div>No questions found</div>;
@@ -50,10 +51,10 @@ const Quiz = () => {
         </button>
 
         {currentIndex === questions.length - 1 ? (
-          <button onClick={() => alert("Quiz Submitted!")}>Submit</button>
+          <button onClick={() => navigate('/quizresult')}>Submit</button>
         ) : (
           <button
-          disabled={!selected}
+            disabled={!selected}
             onClick={() => {
               dispatch(nextQuestion());
             }}
