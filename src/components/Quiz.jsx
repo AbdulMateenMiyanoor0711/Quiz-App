@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
 import { nextQuestion, prevQuestion, selectAnswer } from "../redux/quizSlice";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 const Quiz = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { category } = useParams();
   const { questions, currentIndex, answers } = useSelector(
     (state) => state.quiz,
   );
@@ -51,10 +52,13 @@ const Quiz = () => {
         </button>
 
         {currentIndex === questions.length - 1 ? (
-          <button onClick={() => {
-            dispatch({ type: 'quiz/submit', payload: answers });
-            navigate("/quizresult")
-          }}>Submit</button>
+          <button
+            onClick={() => {
+              navigate(`/quizresult/${category}`);
+            }}
+          >
+            Submit
+          </button>
         ) : (
           <button
             disabled={!selected}
