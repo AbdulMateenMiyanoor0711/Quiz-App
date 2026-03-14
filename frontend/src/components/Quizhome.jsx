@@ -79,7 +79,12 @@ const Quizhome = () => {
             <p>Are you Sure you want to take this Quiz</p>
             <button
               onClick={() => {
-                dispatch(startQuiz(allQuizzez[pendingCategory]));
+                dispatch(
+                  startQuiz({
+                    questions: allQuizzez[pendingCategory],
+                    category: pendingCategory,
+                  }),
+                );
                 navigate(`/quiz/${pendingCategory}`);
                 setShowPopup(false);
               }}

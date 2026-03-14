@@ -14,8 +14,9 @@ const quizSlice = createSlice({
   initialState,
   reducers: {
     startQuiz: (state, action) => {
-      const quizdata = action.payload;
-      state.questions = quizdata;
+      const { questions, category } = action.payload;
+      state.questions = questions;
+      state.category = category;
       state.currentIndex = 0;
       state.answers = [];
       state.isStarted = true;
