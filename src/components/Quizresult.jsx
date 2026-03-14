@@ -1,27 +1,14 @@
-import { useNavigate, useParams } from "react-router";
-import { useDispatch } from "react-redux";
-import { startQuiz } from "../redux/quizSlice";
-import { allQuizzez } from "../support/questions";
+import { useNavigate } from "react-router";
+
 const Quizresult = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { category } = useParams();
 
   return (
     <>
-      <div>
-        <div>
-          <button onClick={() => navigate("/")}>Go TO Home</button>
-          <button
-            onClick={() => {
-              dispatch(startQuiz(allQuizzez[category]));
-              navigate(`/quiz/${category}`);
-            }}
-          >
-            Take Quiz again
-          </button>
-        </div>
-      </div>
+      <h1>Quiz Results</h1>
+
+      <button onClick={() => navigate("/")}>Go To Home</button>
+      <button>Take Quiz Again</button>
     </>
   );
 };

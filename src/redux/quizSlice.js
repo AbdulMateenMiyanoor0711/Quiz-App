@@ -6,6 +6,7 @@ const initialState = {
   currentIndex: 0,
   answers: [],
   isStarted: false,
+  category: null,
 };
 
 const quizSlice = createSlice({
@@ -15,9 +16,6 @@ const quizSlice = createSlice({
     startQuiz: (state, action) => {
       const quizdata = action.payload;
       state.questions = quizdata;
-      // const shuffled = [...quizdata].sort(() => 0.5 - Math.random());
-      // const randomten = shuffled.slice(0, 10);
-      // state.questions = randomten;
       state.currentIndex = 0;
       state.answers = [];
       state.isStarted = true;

@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router";
 import { allQuizzez } from "../support/questions";
-import { useDispatch, useSelector } from "react-redux";
-
+import { useDispatch } from "react-redux";
 import { startQuiz } from "../redux/quizSlice";
 import { useState } from "react";
+
 const Quizhome = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { questions, currentIndex } = useSelector((state) => state.quiz);
   const [showPopup, setShowPopup] = useState(false);
   const [pendingCategory, setPendingCategory] = useState(null);
+
   return (
     <>
       <div className="carbox">
