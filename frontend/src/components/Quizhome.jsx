@@ -2,16 +2,36 @@ import { useNavigate } from "react-router";
 import { allQuizzez } from "../support/questions";
 import { useDispatch } from "react-redux";
 import { startQuiz } from "../redux/quizSlice";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Quizhome = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showPopup, setShowPopup] = useState(false);
   const [pendingCategory, setPendingCategory] = useState(null);
+  const [QuizCategory, setQuizCategory] = useState([]);
+
+  useEffect(() => {
+    quizCategories();
+  }, []);
+  const quizCategories = async () => {
+    try {
+      let url = "http://localhost:8080/quiz-category";
+      let response = await fetch(url);
+      let results = await response.json();
+      console.log("Quiz Categories", results);
+      let data = results.data;
+      setQuizCategory.data;
+      console.log(data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
+      <div>{QuizCategory[0]}</div>
       <div className="carbox">
         <div className="innercard">
           <div className="quizcard">HTML</div>

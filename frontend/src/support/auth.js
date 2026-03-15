@@ -9,7 +9,7 @@ function setCookies(token) {
 
 function getCookies() {
   const token = Cookies.get("authToken");
-  if (!!token) {
+  if (token) {
     // logic
     // api -> validUser -> token -> sesion table -> valid_till
     return true;
