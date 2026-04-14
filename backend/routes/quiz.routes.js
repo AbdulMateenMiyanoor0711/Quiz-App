@@ -1,7 +1,7 @@
 const express = require("express");
 const quiz = require("../controllers/quiz.controller");
 const router = express.Router();
-
+  
 router.get("/quiz-category", async (req, res) => {
   try {
     const data = await quiz.quizCategory();
@@ -26,7 +26,7 @@ router.get("/quiz-question", async (req, res) => {
     console.log(error);
   }
 });
-router.get("/user-answers", async (req, res) => {
+router.get("/user-answer", async (req, res) => {
   try {
     const data = await quiz.userAnswers();
     res.status(200).send({
