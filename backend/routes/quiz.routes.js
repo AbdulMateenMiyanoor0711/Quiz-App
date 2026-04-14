@@ -13,7 +13,7 @@ router.get("/quiz-category", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-});
+}); 
 
 router.get("/quiz-question", async (req, res) => {
   try {

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { data, useNavigate } from "react-router";
 import { allQuizzez } from "../support/questions";
 import { useDispatch } from "react-redux";
 import { startQuiz } from "../redux/quizSlice";
@@ -12,8 +12,9 @@ const Quizhome = () => {
   const [QuizCategory, setQuizCategory] = useState([]);
 
   useEffect(() => {
-    quizCategories();
-  }, []);
+    quizCategories;
+  }, [])
+  
   const quizCategories = async () => {
     try {
       let url = "http://localhost:8080/quiz-category";
@@ -28,6 +29,7 @@ const Quizhome = () => {
       console.log(error);
     }
   };
+
 
   return (
     <>
