@@ -1,11 +1,10 @@
-import { useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import { startQuiz } from "../redux/quizSlice";
-import { allQuizzez } from "../support/questions";
+import { useNavigate, useLocation } from "react-router";
+
 const Quizresult = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { questions, answers, category } = useSelector((state) => state.quiz);
+  const location = useLocation();
+  const { questions = [], answers = [], category } = location.state || {};
+
   const results = questions.map((question, index) => ({
     question: question,
     answer: answers[index],
@@ -14,6 +13,7 @@ const Quizresult = () => {
   }));
 
   const score = results.filter((r) => r.isCorrect).length;
+
   return (
     <>
       <h1>Quiz Results</h1>
@@ -42,7 +42,6 @@ const Quizresult = () => {
       </ul>
       <button
         onClick={() => {
-          dispatch(startQuiz({ questions: allQuizzez[category], category }));
           navigate(`/quiz/${category}`);
         }}
       >

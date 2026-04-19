@@ -1,113 +1,56 @@
-import { data, useNavigate } from "react-router";
-import { allQuizzez } from "../support/questions";
-import { useDispatch } from "react-redux";
-import { startQuiz } from "../redux/quizSlice";
+import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 
 const Quizhome = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [showPopup, setShowPopup] = useState(false);
-  const [pendingCategory, setPendingCategory] = useState(null);
+  const [pendingCategoryId, setPendingCategoryId] = useState(null);
   const [QuizCategory, setQuizCategory] = useState([]);
 
-  useEffect(() => {
-    quizCategories;
-  }, [])
-  
   const quizCategories = async () => {
     try {
       let url = "http://localhost:8080/quiz-category";
       let response = await fetch(url);
       let results = await response.json();
       console.log("Quiz Categories", results);
-      let data = results.data;
-      setQuizCategory.data;
-      console.log(data);
-      
+      let quizData = results.data;
+      setQuizCategory(quizData);
+      console.log(quizData);
     } catch (error) {
       console.log(error);
     }
   };
-
+  useEffect(() => {
+    quizCategories();
+  }, []);
 
   return (
     <>
-      <div>{QuizCategory[0]}</div>
-      <div className="carbox">
-        <div className="innercard">
-          <div className="quizcard">HTML</div>
-          <button
-            className="quizbutton"
-            onClick={() => {
-              setPendingCategory("html");
-              setShowPopup(true);
-            }}
-          >
-            TAKE QUIZ
-          </button>
-        </div>
-
-        <div className="innercard">
-          <div className="quizcard">JAVASCRIPT</div>
-          <button
-            className="quizbutton"
-            onClick={() => {
-              setPendingCategory("java");
-              setShowPopup(true);
-            }}
-          >
-            TAKE QUIZ
-          </button>
-        </div>
-        <div className="innercard">
-          <div className="quizcard">NODE.JS</div>
-          <button
-            className="quizbutton"
-            onClick={() => {
-              setPendingCategory("node");
-              setShowPopup(true);
-            }}
-          >
-            TAKE QUIZ
-          </button>
-        </div>
-        <div className="innercard">
-          <div className="quizcard">REACT</div>
-          <button
-            className="quizbutton"
-            onClick={() => {
-              setPendingCategory("react");
-              setShowPopup(true);
-            }}
-          >
-            TAKE QUIZ
-          </button>
-        </div>
-        <div className="innercard">
-          <div className="quizcard">SQL</div>
-          <button
-            className="quizbutton"
-            onClick={() => {
-              setPendingCategory("sql");
-              setShowPopup(true);
-            }}
-          >
-            TAKE QUIZ
-          </button>
+      <div>
+        <div>
+          {QuizCategory.map((category, index) => {
+            return (
+              <div key={index}>
+                <div>{index + 1}</div>
+                <div>{category.category}</div>
+                <button
+                  onClick={() => {
+                    setPendingCategoryId(category.id);
+                    setShowPopup(true);
+                  }}
+                >
+                  Take Quiz
+                </button>
+              </div>
+            );
+          })}
         </div>
         {showPopup && (
           <div>
             <p>Are you Sure you want to take this Quiz</p>
             <button
               onClick={() => {
-                dispatch(
-                  startQuiz({
-                    questions: allQuizzez[pendingCategory],
-                    category: pendingCategory,
-                  }),
-                );
-                navigate(`/quiz/${pendingCategory}`);
+                navigate(`/quiz/${pendingCategoryId}`);
                 setShowPopup(false);
               }}
             >
@@ -116,7 +59,7 @@ const Quizhome = () => {
             <button
               onClick={() => {
                 setShowPopup(false);
-                setPendingCategory(null);
+                setPendingCategoryId(null);
               }}
             >
               Cancel

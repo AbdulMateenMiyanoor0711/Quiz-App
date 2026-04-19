@@ -1,60 +1,81 @@
-import { useSelector, useDispatch } from "react-redux";
-import { nextQuestion, prevQuestion, selectAnswer } from "../redux/quizSlice";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import { useState, useEffect } from "react";
 
 const Quiz = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { questions, currentIndex, answers } = useSelector(
-    (state) => state.quiz,
-  );
+  const { category } = useParams();
+  const [quizQuestions, setQuizQuestions] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [answers, setAnswers] = useState([]);
+
+  const fetchQuestions = async () => {
+    try {
+      const url = `http://localhost:8080/quiz-question/${category_id}`;
+      const response = await fetch(url);
+      const results = await response.json();
+      const quizData = results.data;
+      console.log("Quiz Questions", quizData);
+      setQuizQuestions(quizData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const selected = answers[currentIndex];
+  const currentQuestion = quizQuestions[currentIndex];
 
-  if (!questions || questions.length === 0) {
-    return <div>No questions found</div>;
-  }
-
-  const currentQuestion = questions[currentIndex];
-
+  useEffect(() => {
+    fetchQuestions();
+  }, [category]);
   return (
     <div>
       <p>
-        Question No {currentIndex + 1} of {questions.length}
+        Question No {currentIndex + 1} of {quizQuestions.length}
       </p>
-      <h2>{currentQuestion.question}</h2>
+      <h2>{currentQuestion?.question}</h2>
 
-      {currentQuestion.options.map((option, i) => (
-        <div key={i}>
-          <label>
-            <input
-              type="radio"
-              name="quiz-option"
-              value={option}
-              checked={selected === option}
-              onChange={() => {
-                dispatch(selectAnswer({ index: currentIndex, answer: option }));
-              }}
-            />
-            {option}
-          </label>
-        </div>
-      ))}
+      {/* Quiz Options */}
+      {currentQuestion?.options?.map((option, i) => {
+        return (
+          <div key={i}>
+            <label>
+              <input
+                type="radio"
+                name="quiz-option"
+                value={option}
+                checked={selected === option}
+                onChange={() => {
+                  const newAnswers = [...answers];
+                  newAnswers[currentIndex] = option;
+                  setAnswers(newAnswers);
+                }}
+              />
+              {option}
+            </label>
+          </div>
+        );
+      })}
 
       <div>
         <button
           disabled={currentIndex === 0}
           onClick={() => {
-            dispatch(prevQuestion());
+            setCurrentIndex(currentIndex - 1);
           }}
         >
           Previous
         </button>
 
-        {currentIndex === questions.length - 1 ? (
+        {currentIndex === quizQuestions.length - 1 ? (
           <button
             onClick={() => {
-              navigate("/quizresult");
+              navigate("/quizresult", {
+                state: {
+                  questions: quizQuestions,
+                  answers: answers,
+                  category: category,
+                },
+              });
             }}
           >
             Submit
@@ -63,7 +84,7 @@ const Quiz = () => {
           <button
             disabled={!selected}
             onClick={() => {
-              dispatch(nextQuestion());
+              setCurrentIndex(currentIndex + 1);
             }}
           >
             Next
