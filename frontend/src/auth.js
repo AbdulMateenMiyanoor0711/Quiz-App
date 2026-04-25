@@ -1,24 +1,21 @@
 import Cookies from "js-cookie";
 function setCookie(token) {
-  const isSecure = typeof window !== 'undefined' && window.location && window.location.protocol === 'https:';
   Cookies.set("authToken", token, {
     expires: 7,
-    secure: isSecure,
+    secure: true,
     sameSite: "Strict",
   });
 }
 
 function getCookies() {
   const token = Cookies.get("authToken");
-  if (!!token) {
-    return true;
-  } else {
-    return false;
-  }
+  // return true when a token exists (user is logged in)
+  return !!token;
 }
 
 function clearCookies() {
   Cookies.remove("authToken");
+  localStorage.removeItem("userId");
 }
 
 export default {

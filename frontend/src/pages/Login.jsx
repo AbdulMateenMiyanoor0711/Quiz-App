@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import auth from "./../auth";
-
 const Login = () => {
   const isValid = auth.getCookies();
   const navigate = useNavigate();
@@ -9,7 +8,6 @@ const Login = () => {
   useEffect(() => {
     if (isValid) {
       console.log("check here", isValid);
-      navigate("/");
       return;
     }
   }, [navigate, isValid]);
@@ -36,6 +34,10 @@ const Login = () => {
       if (!response.ok) {
         throw new Error(data.msg || "Login failed");
       }
+      if (data.success) {
+        localStorage.setItem("userId", data.userId); // save SQL id
+        console.log("Saved:", data.userId);
+      }
       let dummy = {
         token: "abc_token",
         msg: "login success",
@@ -43,7 +45,8 @@ const Login = () => {
       auth.setCookies(dummy.token);
       setemail("");
       setpassword("");
-      window.location.href = "/";
+      window.location.href = "/dashboard";
+
       alert("User Login SuccesFul");
     } catch (error) {
       alert(error.message);
@@ -53,11 +56,10 @@ const Login = () => {
   return (
     <>
       <h1>Enter you Details For Login</h1>
-      <div >
+      <div>
         <input
           type="email"
           placeholder="Enter Your Email"
-        
           value={email}
           onChange={(event) => setemail(event.target.value)}
         />
@@ -69,11 +71,9 @@ const Login = () => {
           onChange={(event) => setpassword(event.target.value)}
         />
 
-        <div >
-          <button onClick={verifyUsers} >
-            Login
-          </button>
-          <p >
+        <div>
+          <button onClick={verifyUsers}>Login</button>
+          <p>
             Don't have an account? <Link to="/register">Register</Link>
           </p>
         </div>

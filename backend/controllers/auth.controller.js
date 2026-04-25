@@ -34,17 +34,19 @@ async function verifyUser(body) {
       [body.email]
     );
     let users = user[0][0];
+    console.log("users", users);
     if (!users) {
       throw new Error("Users not Exists");
     }
-    console.log("users", users);
 
     let match = await hashed.verifyPassword(users.password, body.password);
-
-    if (!match) {
+  
+    
+        if (!match) {
       throw new Error("Password Not match");
     }
     return users;
+    
   } catch (error) {
     throw error;
   }

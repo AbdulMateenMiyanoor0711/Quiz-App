@@ -11,17 +11,11 @@ const Quizresult = () => {
     correctAnswer: question.ans,
     isCorrect: answers[index] === question.ans,
   }));
-
+  const userId = localStorage.getItem("userId");
   const score = results.filter((r) => r.isCorrect).length;
-  console.log(
-    "User Id",
-    "Quiz Category id",
-    category,
-    "score",
-    score,
-    "Total Questions",
-    questions.length,
-  );
+  console.log("Score :", score);
+  console.log("Total Questions", questions.length);
+  console.log("User Id", userId);
 
   return (
     <>
@@ -50,9 +44,9 @@ const Quizresult = () => {
         ))}
       </ul>
       <button
-          onClick={() => {
-            navigate(`/quiz/${category}`);
-          }}
+        onClick={() => {
+          navigate(`/quiz/${category}`);
+        }}
       >
         Take Quiz Again
       </button>
