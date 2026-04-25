@@ -10,7 +10,7 @@ const Quiz = () => {
 
   const fetchQuestions = async () => {
     try {
-      const url = `http://localhost:8080/quiz-question/${category_id}`;
+      const url = `http://localhost:8080/quiz-question/${category}`;
       const response = await fetch(url);
       const results = await response.json();
       const quizData = results.data;
@@ -20,13 +20,13 @@ const Quiz = () => {
       console.log(error);
     }
   };
-
+ useEffect(() => {
+    fetchQuestions();
+  }, [category]);
   const selected = answers[currentIndex];
   const currentQuestion = quizQuestions[currentIndex];
 
-  useEffect(() => {
-    fetchQuestions();
-  }, [category]);
+ 
   return (
     <div>
       <p>

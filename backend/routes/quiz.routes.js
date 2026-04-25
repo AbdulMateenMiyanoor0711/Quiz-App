@@ -38,5 +38,18 @@ router.get("/user-answer", async (req, res) => {
     console.log(error);
   }
 });
+router.post("/user-answer", async (req, res) => {
+  try {
+    const data = await quiz.userAttempt(req.body);
+    res.status(200).send({
+      data: data,
+      msg: "succes",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
 
 module.exports = router;

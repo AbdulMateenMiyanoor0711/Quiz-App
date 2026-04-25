@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import auth from "../support/auth";
+import auth from "./../auth";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -17,7 +17,7 @@ const Register = () => {
       navigate("/");
       return;
     }
-  }, []);
+  }, [navigate, isValid]);
 
   const addUser = async () => {
     if (!name || !email || !password) {
@@ -26,7 +26,7 @@ const Register = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8050/add-user", {
+      const response = await fetch("http://localhost:8080/add-user", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -56,11 +56,10 @@ const Register = () => {
   return (
     <>
       <h1>Please Enter Your Details To </h1>
-      <div className="login_body">
+      <div >
         <input
           type="text"
           placeholder="Enter Your Name"
-          className="logininput"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -68,7 +67,6 @@ const Register = () => {
         <input
           type="email"
           placeholder="Enter Your Email"
-          className="logininput"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -76,13 +74,12 @@ const Register = () => {
         <input
           type="password"
           placeholder="Enter Your Password"
-          className="logininput"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <div className="buttonarea">
-          <button className="loginbutton" onClick={addUser}>
+        <div >
+        <button  onClick={addUser}>
             Register
           </button>
         </div>
