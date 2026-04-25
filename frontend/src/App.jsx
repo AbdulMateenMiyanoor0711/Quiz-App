@@ -21,11 +21,11 @@ const App = () => {
           {isValid && <Link to="/dashboard">Dashboard</Link>}
         </nav>
         <Routes>
-          <Route path="/" element={<Quizhome />} />
+          <Route path="/"element={isValid ? <Quizhome /> : <Navigate to="/login" />} />
           <Route path="/quiz/:category" element={<Quiz />} />
           <Route
             path="/dashboard"
-            element={isValid ? <Dashboard /> : <Navigate to="/register" />}
+            element={isValid ? <Dashboard /> : <Navigate to="/login" />}
           />
           <Route path="/quizresult" element={<Quizresult />} />
           <Route path="/login" element={<Login />} />

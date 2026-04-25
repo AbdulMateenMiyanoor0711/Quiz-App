@@ -45,7 +45,7 @@ const Login = () => {
       auth.setCookies(dummy.token);
       setemail("");
       setpassword("");
-      window.location.href = "/dashboard";
+      window.location.href = "/";
 
       alert("User Login SuccesFul");
     } catch (error) {
