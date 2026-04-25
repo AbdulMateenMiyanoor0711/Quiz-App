@@ -20,13 +20,12 @@ const Quiz = () => {
       console.log(error);
     }
   };
- useEffect(() => {
+  useEffect(() => {
     fetchQuestions();
   }, [category]);
   const selected = answers[currentIndex];
   const currentQuestion = quizQuestions[currentIndex];
 
- 
   return (
     <div>
       <p>
