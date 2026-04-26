@@ -34,9 +34,12 @@ const Login = () => {
       if (!response.ok) {
         throw new Error(data.msg || "Login failed");
       }
-      if (data.success) {
-        localStorage.setItem("userId", data.userId); // save SQL id
-        console.log("Saved:", data.userId);
+      const userId = data.user?.id;
+      if (userId) {
+        localStorage.setItem("userId", userId); // save SQL id
+        console.log("Saved userId:", userId);
+      } else {
+        console.warn("No userId in response:", data);
       }
       let dummy = {
         token: "abc_token",

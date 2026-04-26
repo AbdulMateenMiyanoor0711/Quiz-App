@@ -42,7 +42,7 @@ async function userAttempt(body) {
   try {
     let add = await db.query(
       `INSERT INTO quiz_attempt (user_id, quiz_category_id, score, total_questions, created_at) VALUES (?, ?, ?, ?, NOW())`,
-      [body.user_id, body.quiz_category_id, body.score, body.total_questions]
+      [body.user_id, body.quiz_category_id, body.score, body.total_questions],
     );
     console.log("Adding Users Answer", add);
     return add;
@@ -54,5 +54,5 @@ module.exports = {
   quizCategory: quizCategory,
   quizQuestions: quizQuestions,
   userAnswers: userAnswers,
-  userAttempt:userAttempt
+  userAttempt: userAttempt,
 };

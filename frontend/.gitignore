@@ -37,3 +37,7 @@ Thumbs.db
 
 # Vite cache
 .vite
+
+#Database
+/db.sql
+/db.js
