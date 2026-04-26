@@ -21,15 +21,24 @@ const App = () => {
           {isValid && <Link to="/dashboard">Dashboard</Link>}
         </nav>
         <Routes>
-          <Route path="/"element={isValid ? <Quizhome /> : <Navigate to="/login" />} />
+          <Route
+            path="/"
+            element={isValid ? <Quizhome /> : <Navigate to="/login" />}
+          />
           <Route path="/quiz/:category" element={<Quiz />} />
           <Route
             path="/dashboard"
             element={isValid ? <Dashboard /> : <Navigate to="/login" />}
           />
           <Route path="/quizresult" element={<Quizresult />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/login"
+            element={isValid ? <Navigate to="/" /> : <Login />}
+          />
+          <Route
+            path="/register"
+            element={isValid ? <Navigate to="/" /> : <Register />}
+          />
         </Routes>
       </BrowserRouter>
     </>
