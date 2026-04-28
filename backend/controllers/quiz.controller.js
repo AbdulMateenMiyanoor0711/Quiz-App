@@ -29,9 +29,12 @@ async function quizQuestions(category_id) {
   }
 }
 
-async function userAnswers() {
+async function userAnswers(user_id) {
   try {
-    const answers = await db.query(`SELECT * FROM quiz_app.quiz_attempt;`);
+    const answers = await db.query(
+      `SELECT * FROM quiz_app.quiz_attempt WHERE user_id = ?;`,
+      [user_id],
+    );
     console.log("Succesfull in getting Users Selected Answers", answers);
     return answers[0];
   } catch (error) {

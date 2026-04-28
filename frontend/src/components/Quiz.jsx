@@ -26,69 +26,87 @@ const Quiz = () => {
   const selected = answers[currentIndex];
   const currentQuestion = quizQuestions[currentIndex];
 
+  /* FIGMA — progress percentage */
+  const progressPct = quizQuestions.length
+    ? Math.round(((currentIndex + 1) / quizQuestions.length) * 100)
+    : 0;
+
   return (
-    <div>
-      <p>
-        Question No {currentIndex + 1} of {quizQuestions.length}
-      </p>
-      <h2>{currentQuestion?.question}</h2>
+    /* FIGMA */
+    <div className="quiz-page">
+      <div className="quiz-content">
+        <p className="quiz-header-text">
+          Question No {currentIndex + 1} of {quizQuestions.length}
+        </p>
+        {/* FIGMA — progress bar */}
+        <div className="quiz-progress-bar">
+          <div className="quiz-progress-fill" style={{ width: `${progressPct}%` }} />
+        </div>
+        <h2 className="quiz-question-text">{currentQuestion?.question}</h2>
 
-      {/* Quiz Options */}
-      {currentQuestion?.options?.map((option, i) => {
-        return (
-          <div key={i}>
-            <label>
-              <input
-                type="radio"
-                name="quiz-option"
-                value={option}
-                checked={selected === option}
-                onChange={() => {
-                  const newAnswers = [...answers];
-                  newAnswers[currentIndex] = option;
-                  setAnswers(newAnswers);
-                }}
-              />
-              {option}
-            </label>
-          </div>
-        );
-      })}
+        {/* FIGMA — options as numbered list */}
+        <ol className="quiz-options-list">
+          {currentQuestion?.options?.map((option, i) => {
+            return (
+              <li key={i} className="quiz-option-item">
+                <label>
+                  <input
+                    type="radio"
+                    name="quiz-option"
+                    value={option}
+                    checked={selected === option}
+                    onChange={() => {
+                      const newAnswers = [...answers];
+                      newAnswers[currentIndex] = option;
+                      setAnswers(newAnswers);
+                    }}
+                  />
+                  {option}
+                </label>
+              </li>
+            );
+          })}
+        </ol>
 
-      <div>
-        <button
-          disabled={currentIndex === 0}
-          onClick={() => {
-            setCurrentIndex(currentIndex - 1);
-          }}
-        >
-          Previous
-        </button>
-
-        {currentIndex === quizQuestions.length - 1 ? (
+        {/* FIGMA */}
+        <div className="quiz-nav">
           <button
+            className="btn-quiz-nav"
+            disabled={currentIndex === 0}
             onClick={() => {
-              navigate("/quizresult", {
-                state: {
-                  questions: quizQuestions,
-                  answers: answers,
-                  category: category,
-                },
-              });
+              setCurrentIndex(currentIndex - 1);
             }}
           >
-            Submit
+            ← Previous
           </button>
-        ) : (
-          <button
-            disabled={!selected}
-            onClick={() => {
-              setCurrentIndex(currentIndex + 1);
-            }}
-          >
-            Next
-          </button>
-        )}
+
+          {currentIndex === quizQuestions.length - 1 ? (
+            <button
+              className="btn-quiz-nav"
+              onClick={() => {
+                navigate("/quizresult", {
+                  state: {
+                    questions: quizQuestions,
+                    answers: answers,
+                    category: category,
+                  },
+                });
+              }}
+            >
+              Submit
+            </button>
+          ) : (
+            <button
+              className="btn-quiz-nav"
+              disabled={!selected}
+              onClick={() => {
+                setCurrentIndex(currentIndex + 1);
+              }}
+            >
+              Submit &amp; Continue →
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

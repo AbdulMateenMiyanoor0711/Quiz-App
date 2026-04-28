@@ -27,9 +27,9 @@ router.get("/quiz-question/:category_id", async (req, res) => {
     console.log(error);
   }
 });
-router.get("/user-answer", async (req, res) => {
+router.get("/user-answer/:user_id", async (req, res) => {
   try {
-    const data = await quiz.userAnswers();
+    const data = await quiz.userAnswers(req.params.user_id);
     res.status(200).send({
       data: data,
       msg: "succes",
@@ -49,7 +49,5 @@ router.post("/user-answer", async (req, res) => {
     console.log(error);
   }
 });
-
-
 
 module.exports = router;

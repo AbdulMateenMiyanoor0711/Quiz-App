@@ -12,14 +12,16 @@ const App = () => {
   const [isValid, setisValid] = useState(val);
   return (
     <>
-      <h1>Quiz</h1>
-
+      {/* FIGMA */}
       <BrowserRouter>
-        <nav>
-          {!isValid && <Link to="/login">Login</Link>}
-          {!isValid && <Link to="/register">Register</Link>}
-          {isValid && <Link to="/dashboard">Dashboard</Link>}
-        </nav>
+        <header className="app-header">
+          <Link className="app-logo" to="/">▶ <span>techpaathshala.</span></Link>
+          <nav className="app-nav">
+            {!isValid && <Link to="/login">Login</Link>}
+            {!isValid && <Link to="/register">Register</Link>}
+            {isValid && <Link to="/dashboard">Dashboard</Link>}
+          </nav>
+        </header>
         <Routes>
           <Route
             path="/"

@@ -57,31 +57,46 @@ const Login = () => {
   };
 
   return (
-    <>
-      <h1>Enter you Details For Login</h1>
-      <div>
-        <input
-          type="email"
-          placeholder="Enter Your Email"
-          value={email}
-          onChange={(event) => setemail(event.target.value)}
-        />
-
-        <input
-          type="password"
-          placeholder="Enter Your Password"
-          value={password}
-          onChange={(event) => setpassword(event.target.value)}
-        />
-
+    /* FIGMA */
+    <div className="login-page">
+      <div className="login-card">
+        <h1 className="login-heading">Enter you Details For Login</h1>
+        <p className="login-subtitle">Welcome back! Please sign in to continue.</p>
         <div>
-          <button onClick={verifyUsers}>Login</button>
-          <p>
-            Don't have an account? <Link to="/register">Register</Link>
-          </p>
+          {/* FIGMA */}
+          <div className="form-group">
+            <label className="form-label">Email <span className="required">*</span></label>
+            <input
+              className="form-input"
+              type="email"
+              placeholder="Enter Your Email"
+              value={email}
+              onChange={(event) => setemail(event.target.value)}
+            />
+          </div>
+
+          {/* FIGMA */}
+          <div className="form-group">
+            <label className="form-label">Password <span className="required">*</span></label>
+            <input
+              className="form-input"
+              type="password"
+              placeholder="Enter Your Password"
+              value={password}
+              onChange={(event) => setpassword(event.target.value)}
+            />
+          </div>
+
+          {/* FIGMA */}
+          <div>
+            <button className="btn-primary" onClick={verifyUsers}>Login</button>
+            <p className="login-footer">
+              Don't have an account? <Link to="/register">Register</Link>
+            </p>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

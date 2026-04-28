@@ -1,17 +1,18 @@
 import { useNavigate, useLocation } from "react-router";
-
 const Quizresult = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { questions = [], answers = [], category } = location.state || {};
-
   if (!location.state || questions.length === 0) {
     return (
-      <>
-        <h2>No quiz data found.</h2>
-        <p>Please take a quiz first — results are lost on page refresh.</p>
-        <button onClick={() => navigate("/")}>Go To Home</button>
-      </>
+      /* FIGMA */
+      <div className="result-page">
+        <div className="result-content">
+          <h2 className="result-heading">No quiz data found.</h2>
+          <p className="result-score">Please take a quiz first — results are lost on page refresh.</p>
+          <button className="btn-result-primary" onClick={() => navigate("/")}>Go To Home</button>
+        </div>
+      </div>
     );
   }
 
@@ -58,41 +59,78 @@ const Quizresult = () => {
   }
 
   return (
-    <>
-      <h1>Quiz Results</h1>
-      <p>
-        Your Score: {score}/{questions.length}
-      </p>
-      <ul>
-        {results.map((result, index) => (
-          <li key={index}>
-            <strong>Q{index + 1}</strong>
-            <p>{result.question.question}</p>
-            <p>
-              <b>You selected: </b>
-              {result.answer} {result.isCorrect ? "✅ correct" : "❌ incorrect"}
-            </p>
-            {!result.isCorrect && (
+    /* FIGMA */
+    <div className="result-page">
+      <div className="result-content">
+        <h1 className="result-heading">Quiz Results</h1>
+        <p className="result-score">
+          Your Score: <strong>{score}/{questions.length}</strong>
+        </p>
+
+        {/* FIGMA */}
+        <ul className="result-list" style={{ listStyle: "none", padding: 0 }}>
+          {results.map((item, i) => (
+            <li key={i} className={`result-item ${item.isCorrect ? "correct" : "wrong"}`}>
               <p>
-                <b>Correct Answer:</b> {result.correctAnswer}
+                <strong>Q{i + 1}:</strong> {item.question.question}
               </p>
-            )}
-          </li>
-        ))}
-      </ul>
-      <button
-        onClick={async () => {
-          await addResults();
-          navigate("/");
-        }}
-      >
-        Submit Quiz
-      </button>
-      <button onClick={() => navigate(`/quiz/${category}`)}>
-        Take Quiz Again
-      </button>
-      <button onClick={() => navigate("/")}>Go To Home</button>
-    </>
+              <p>
+                Your Answer:{" "}
+                <span className={item.isCorrect ? "answer-correct" : "answer-wrong"}>
+                  {item.answer ?? "Not answered"}
+                </span>
+              </p>
+              {!item.isCorrect && (
+                <p>
+                  Correct Answer:{" "}
+                  <span className="answer-correct">{item.correctAnswer}</span>
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
+
+        {/* FIGMA */}
+        <div className="result-actions">
+          <button
+            className="btn-result-primary"
+            onClick={async () => {
+              await addResults();
+              navigate("/");
+            }}
+          >
+            Submit Quiz
+          </button>
+          <button
+            className="btn-result-outline"
+            onClick={async () => {
+              await addResults();
+              navigate(`/quiz/${category}`);
+            }}
+          >
+            Take Quiz Again
+          </button>
+          <button
+            className="btn-result-outline"
+            onClick={async () => {
+              await addResults();
+              navigate("/");
+            }}
+          >
+            Go To Home
+          </button>
+          <button
+            className="btn-result-outline"
+            onClick={async () => {
+              await addResults();
+              navigate("/dashboard");
+            }}
+          >
+            Go To Dashboard
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 

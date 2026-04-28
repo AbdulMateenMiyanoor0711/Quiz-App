@@ -54,37 +54,56 @@ const Register = () => {
   };
 
   return (
-    <>
-      <h1>Please Enter Your Details To </h1>
-      <div >
-        <input
-          type="text"
-          placeholder="Enter Your Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+    /* FIGMA */
+    <div className="register-page">
+      <div className="register-card">
+        <h1 className="register-heading">Please Enter Your Details To </h1>
+        <div>
+          {/* FIGMA */}
+          <div className="form-group">
+            <label className="form-label">Name <span className="required">*</span></label>
+            <input
+              className="form-input"
+              type="text"
+              placeholder="Enter Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
 
-        <input
-          type="email"
-          placeholder="Enter Your Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          {/* FIGMA */}
+          <div className="form-group">
+            <label className="form-label">Email <span className="required">*</span></label>
+            <input
+              className="form-input"
+              type="email"
+              placeholder="Enter Your Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
-        <input
-          type="password"
-          placeholder="Enter Your Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          {/* FIGMA */}
+          <div className="form-group">
+            <label className="form-label">Password <span className="required">*</span></label>
+            <input
+              className="form-input"
+              type="password"
+              placeholder="Enter Your Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
 
-        <div >
-        <button  onClick={addUser}>
-            Register
-          </button>
+          {/* FIGMA */}
+          <div>
+            <button className="btn-primary" onClick={addUser}>
+              Register
+            </button>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
