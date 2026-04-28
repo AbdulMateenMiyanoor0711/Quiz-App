@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router";
+import techpaathshalaLogo from "../techpaathshala_logo.png";
 import Quizhome from "./components/Quizhome";
 import Quiz from "./components/Quiz";
 import Dashboard from "./components/Dashboard";
@@ -15,7 +16,7 @@ const App = () => {
       {/* FIGMA */}
       <BrowserRouter>
         <header className="app-header">
-          <Link className="app-logo" to="/">▶ <span>techpaathshala.</span></Link>
+          <Link className="app-logo" to="/"><img src={techpaathshalaLogo} alt="TechPaathshala Logo" /></Link>
           <nav className="app-nav">
             {!isValid && <Link to="/login">Login</Link>}
             {!isValid && <Link to="/register">Register</Link>}

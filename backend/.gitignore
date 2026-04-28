@@ -29,3 +29,5 @@ Thumbs.db
 
 # Database config
 db.js
+.env
+node_modules/
