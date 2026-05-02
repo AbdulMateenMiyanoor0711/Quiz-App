@@ -85,6 +85,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 24px 16px;
 }
 
 .login-card {
@@ -188,6 +189,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 24px 16px;
 }
 
 .register-card {
@@ -268,6 +270,7 @@ body {
   padding: 10px 24px;
   cursor: pointer;
   transition: opacity 0.2s;
+  white-space: nowrap;
 }
 
 .btn-take-quiz:hover {
@@ -283,6 +286,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 200;
+  padding: 16px;
 }
 
 .popup-card {
@@ -290,7 +294,7 @@ body {
   border-radius: var(--border-radius-card);
   padding: 36px 32px;
   max-width: 380px;
-  width: 90%;
+  width: 100%;
   text-align: center;
   box-shadow: 0 8px 40px rgba(0,0,0,0.16);
 }
@@ -306,6 +310,7 @@ body {
   display: flex;
   gap: 12px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .btn-confirm {
@@ -569,6 +574,8 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .dashboard-heading {
@@ -580,6 +587,7 @@ body {
 .dashboard-actions {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .btn-dashboard-link {
@@ -654,4 +662,330 @@ body {
   font-size: 14px;
   font-weight: 600;
   color: var(--color-text-dark);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RESPONSIVE — TABLET (≤ 768px)
+━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 768px) {
+  /* Navbar */
+  .app-header {
+    padding: 0 16px;
+    height: 52px;
+  }
+
+  .app-logo img {
+    height: 28px;
+  }
+
+  .app-nav {
+    gap: 8px;
+  }
+
+  .app-nav a {
+    font-size: 13px;
+    padding: 5px 12px;
+  }
+
+  /* Login / Register cards */
+  .login-card,
+  .register-card {
+    padding: 36px 28px;
+  }
+
+  .login-heading,
+  .register-heading {
+    font-size: 24px;
+  }
+
+  /* Quiz home */
+  .quizhome-page {
+    margin: 28px auto;
+    padding: 0 16px;
+  }
+
+  .quizhome-title {
+    font-size: 22px;
+  }
+
+  .category-card {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .category-name {
+    font-size: 15px;
+  }
+
+  .btn-take-quiz {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  /* Quiz page */
+  .quiz-page {
+    padding: 28px 16px;
+  }
+
+  .quiz-header-text {
+    font-size: 26px;
+  }
+
+  .quiz-question-text {
+    font-size: 17px;
+  }
+
+  .quiz-option-item {
+    font-size: 15px;
+  }
+
+  .btn-quiz-nav {
+    font-size: 14px;
+  }
+
+  /* Result page */
+  .result-page {
+    padding: 28px 16px;
+  }
+
+  .result-heading {
+    font-size: 26px;
+  }
+
+  .result-score {
+    font-size: 16px;
+  }
+
+  .result-item {
+    padding: 14px 16px;
+  }
+
+  .result-item p {
+    font-size: 14px;
+  }
+
+  /* Dashboard */
+  .dashboard-page {
+    padding: 28px 16px;
+  }
+
+  .dashboard-heading {
+    font-size: 24px;
+  }
+
+  .attempt-card {
+    padding: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RESPONSIVE — MOBILE (≤ 480px)
+━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 480px) {
+  /* Navbar */
+  .app-header {
+    padding: 0 12px;
+    height: 48px;
+  }
+
+  .app-logo img {
+    height: 24px;
+  }
+
+  .app-nav {
+    gap: 4px;
+  }
+
+  .app-nav a {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+
+  /* Login / Register cards */
+  .login-page,
+  .register-page {
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+
+  .login-card,
+  .register-card {
+    padding: 28px 20px;
+    border-radius: 10px;
+  }
+
+  .login-heading,
+  .register-heading {
+    font-size: 22px;
+  }
+
+  .login-subtitle {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .form-input {
+    height: 44px;
+    font-size: 14px;
+  }
+
+  .btn-primary {
+    height: 44px;
+    font-size: 14px;
+  }
+
+  /* Quiz home */
+  .quizhome-page {
+    margin: 16px auto;
+    padding: 0 12px;
+  }
+
+  .quizhome-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .category-card {
+    flex-wrap: wrap;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .category-name {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .btn-take-quiz {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  /* Popup */
+  .popup-card {
+    padding: 28px 20px;
+  }
+
+  .popup-text {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .btn-confirm,
+  .btn-cancel {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+
+  /* Quiz page */
+  .quiz-page {
+    padding: 20px 12px;
+  }
+
+  .quiz-header-text {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .quiz-progress-bar {
+    margin-bottom: 20px;
+  }
+
+  .quiz-question-text {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  .quiz-options-list {
+    padding-left: 16px;
+    margin-bottom: 20px;
+  }
+
+  .quiz-option-item {
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  .btn-quiz-nav {
+    font-size: 13px;
+  }
+
+  /* Result page */
+  .result-page {
+    padding: 20px 12px;
+  }
+
+  .result-heading {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+
+  .result-score {
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+
+  .result-item {
+    padding: 12px 14px;
+  }
+
+  .result-item p {
+    font-size: 13px;
+  }
+
+  .result-actions {
+    flex-direction: column;
+  }
+
+  .btn-result-primary,
+  .btn-result-outline {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  /* Dashboard */
+  .dashboard-page {
+    padding: 20px 12px;
+  }
+
+  .dashboard-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .dashboard-heading {
+    font-size: 22px;
+  }
+
+  .dashboard-actions {
+    width: 100%;
+  }
+
+  .btn-dashboard-link,
+  .btn-logout {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .attempt-card {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .attempt-label {
+    font-size: 10px;
+  }
+
+  .attempt-value {
+    font-size: 13px;
+  }
 }
