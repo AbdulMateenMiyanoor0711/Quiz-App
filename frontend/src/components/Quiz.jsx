@@ -40,7 +40,10 @@ const Quiz = () => {
         </p>
         {/* FIGMA — progress bar */}
         <div className="quiz-progress-bar">
-          <div className="quiz-progress-fill" style={{ width: `${progressPct}%` }} />
+          <div
+            className="quiz-progress-fill"
+            style={{ width: `${progressPct}%` }}
+          />
         </div>
         <h2 className="quiz-question-text">{currentQuestion?.question}</h2>
 

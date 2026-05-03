@@ -9,8 +9,12 @@ const Quizresult = () => {
       <div className="result-page">
         <div className="result-content">
           <h2 className="result-heading">No quiz data found.</h2>
-          <p className="result-score">Please take a quiz first — results are lost on page refresh.</p>
-          <button className="btn-result-primary" onClick={() => navigate("/")}>Go To Home</button>
+          <p className="result-score">
+            Please take a quiz first — results are lost on page refresh.
+          </p>
+          <button className="btn-result-primary" onClick={() => navigate("/")}>
+            Go To Home
+          </button>
         </div>
       </div>
     );
@@ -64,19 +68,27 @@ const Quizresult = () => {
       <div className="result-content">
         <h1 className="result-heading">Quiz Results</h1>
         <p className="result-score">
-          Your Score: <strong>{score}/{questions.length}</strong>
+          Your Score:{" "}
+          <strong>
+            {score}/{questions.length}
+          </strong>
         </p>
 
         {/* FIGMA */}
         <ul className="result-list" style={{ listStyle: "none", padding: 0 }}>
           {results.map((item, i) => (
-            <li key={i} className={`result-item ${item.isCorrect ? "correct" : "wrong"}`}>
+            <li
+              key={i}
+              className={`result-item ${item.isCorrect ? "correct" : "wrong"}`}
+            >
               <p>
                 <strong>Q{i + 1}:</strong> {item.question.question}
               </p>
               <p>
                 Your Answer:{" "}
-                <span className={item.isCorrect ? "answer-correct" : "answer-wrong"}>
+                <span
+                  className={item.isCorrect ? "answer-correct" : "answer-wrong"}
+                >
                   {item.answer ?? "Not answered"}
                 </span>
               </p>

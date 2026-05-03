@@ -53,7 +53,9 @@ const Quizhome = () => {
           /* FIGMA */
           <div className="popup-overlay">
             <div className="popup-card">
-              <p className="popup-text">Are you Sure you want to take this Quiz</p>
+              <p className="popup-text">
+                Are you Sure you want to take this Quiz
+              </p>
               <div className="popup-actions">
                 <button
                   className="btn-confirm"

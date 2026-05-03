@@ -61,7 +61,9 @@ const Register = () => {
         <div>
           {/* FIGMA */}
           <div className="form-group">
-            <label className="form-label">Name <span className="required">*</span></label>
+            <label className="form-label">
+              Name <span className="required">*</span>
+            </label>
             <input
               className="form-input"
               type="text"
@@ -73,7 +75,9 @@ const Register = () => {
 
           {/* FIGMA */}
           <div className="form-group">
-            <label className="form-label">Email <span className="required">*</span></label>
+            <label className="form-label">
+              Email <span className="required">*</span>
+            </label>
             <input
               className="form-input"
               type="email"
@@ -85,7 +89,9 @@ const Register = () => {
 
           {/* FIGMA */}
           <div className="form-group">
-            <label className="form-label">Password <span className="required">*</span></label>
+            <label className="form-label">
+              Password <span className="required">*</span>
+            </label>
             <input
               className="form-input"
               type="password"

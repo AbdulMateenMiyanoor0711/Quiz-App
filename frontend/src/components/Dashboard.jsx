@@ -24,7 +24,9 @@ const Dashboard = () => {
         <div className="dashboard-topbar">
           <h1 className="dashboard-heading">Dashboard</h1>
           <div className="dashboard-actions">
-            <Link className="btn-dashboard-link" to="/">Take Quiz</Link>
+            <Link className="btn-dashboard-link" to="/">
+              Take Quiz
+            </Link>
             <button
               className="btn-logout"
               onClick={() => {
@@ -47,7 +49,9 @@ const Dashboard = () => {
                 </div>
                 <div className="attempt-field">
                   <span className="attempt-label">Quiz Category</span>
-                  <span className="attempt-value">{users.quiz_category_id}</span>
+                  <span className="attempt-value">
+                    {users.quiz_category_id}
+                  </span>
                 </div>
                 <div className="attempt-field">
                   <span className="attempt-label">Score</span>
